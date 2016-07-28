@@ -1,0 +1,15 @@
+<h1>Timeline</h1>
+{% extends "index.html" %}
+{% block body %}
+<form action="/tweeting" method="POST">
+  <input type="text" name="tweet" size="80" maxlength="141" placeholder="What are you doing?">
+  <button type="submit" name="tweet">Tweet</button>
+</form>
+
+<ul> {% for tweet in tweets %}
+  <li> {{ tweet.name }} - {{tweet.tweet_content}}<button name="liked" type="submit">Like</li>
+  <hr>
+{% endfor %}
+</ul>
+
+{% endblock %}

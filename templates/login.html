@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block body %}
+<form action="/form_submit" method="POST">
+  <input type="text" name="username"><label for="username">Username</label>
+  <input type="password" name="password">
+  <label for="password">Password</label>
+  <button type="submit" name="login">Login</button>
+  <button type="submit" name="signup">Signup</button>
+</form>
+
+{% endblock %}

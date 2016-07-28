@@ -1,0 +1,15 @@
+body {
+  font-family: helvetica;
+  background-color: hotpink;
+  text-align: center;
+  padding-top: 20%;
+}
+
+button {
+  font-size: 200%;
+  border-radius: 10px;
+  padding: 20px;
+  background-image: linear-gradient(yellow, orange);
+  border: 2px solid orange;
+  font-weight: bold;
+}
