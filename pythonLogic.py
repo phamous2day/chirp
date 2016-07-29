@@ -12,7 +12,20 @@ def home():
         select users.name, tweet_content from users inner join tweet_table on users.id = tweet_table.user_id
     ''')
     tweets = query.namedresult();
-    return render_template('timeline.html', tweets = tweets)
+    return render_template('home.html', tweets = tweets)
+
+
+@app.route('/goLogin', methods = ['POST'])
+def goLogin():
+    return render_template('/login.html')
+
+
+
+@app.route('/goSignup', methods = ['POST'])
+def goSignup():
+    return render_template('/signup.html')
+
+
 
 
 @app.route('/tweeting', methods=['POST'])
@@ -27,18 +40,37 @@ def tweet():
 
 @app.route('/timeline')
 def timeline():
-    user_id = session['id']
+    username = session['username']
     timeline_query = db.query('''
-        select * from tweet_table where
-        tweet_table.user_id = $1 or
-        tweet_table.user_id in (
-            select user_id from followz where person_following = $1
-        )
-    order by
-        time_display asc
-    ''',
-    user_id).namedresult()
-    return render_template('timeline.html', tweets = timeline_query)
+        select
+        tweet_table.tweet_content, tweet_table.id as tweet_id, tweet_table.hearts_amount
+    from users
+    left outer join
+        tweet_table on users.id = tweet_table.user_id
+    where users.username = '%s'
+    ''' % username)
+    tweets = timeline_query.namedresult();
+    return render_template('timeline.html', tweets = tweets)
+
+@app.route('/liked', methods = ['POST'])
+def liked():
+    user_name = session['username']
+    like = request.form['liked']
+    hearts_amount =request.form['hearts_amount']
+    print "TWEEEEEEEEEEET",hearts_amount
+    tweetID =request.form['tweetID']
+    print "this is TWEETID", tweetID
+#     likedStuff= db.query('''
+#     select users.name, hearts,hearts_amount, users.id, tweet_table.tweet_content
+# from tweet_table
+# left outer join users on tweet_table.user_id = users.id where users.username = '%s'
+# '''% user_name)
+
+
+
+    print "TWEEEEEEETID",tweetID
+    db.update('tweet_table',{'id': tweetID, 'hearts': True, 'hearts_amount': int(hearts_amount)+1})
+    return redirect('/timeline')
 
 
 
@@ -57,7 +89,7 @@ def form_submit():
 
     if len(login_validation) > 0:
         session['username'] = username
-        return redirect('/profile/' '%s' % str(username))
+        return redirect('/timeline')
 
         print login_validation
         if username in session:
@@ -68,6 +100,22 @@ def form_submit():
         return redirect('/login')
 
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+
+
+@app.route('/submit_signup', methods=['POST'])
+def submit_signup():
+    name = request.form['name']
+    email = request.form['email']
+    username = request.form['username']
+    password = request.form['password']
+
+    db.insert('users', name=name, email = email, username = username, password = password)
+
+    return redirect('/')
 
 
 @app.route('/profile/<username>')
@@ -77,6 +125,7 @@ def profile(username):
     select
         users.name,
         users.username,
+        tweet_table.id as tweet_id,
         tweet_table.tweet_content,
         tweet_table.timecreated
     from users
@@ -139,6 +188,13 @@ def profile(username):
 
 
     return render_template('profile.html', title='Profile', tweets= tweets, tweet_counts = tweet_counts, follower_count = follower_count, following_count = following_count)
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
+
 
 app.secret_key = 'NTOEU0948375980CTH9EO893'
 

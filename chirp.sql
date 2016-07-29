@@ -36,7 +36,10 @@ insert into tweet_table values(default, 2, 'Getting a programming job', '2016-09
 insert into tweet_table values(default, 3, 'Gonna see Star Trek Beyond', '2005-09-28 01:00:00', TRUE, 5);
 insert into tweet_table values(default, 1, 'I love sandwiches', '2016-09-28 01:00:00', FALSE,  0);
 insert into tweet_table values(default, 1, 'I want to graduate', '2016-09-28 01:00:00', FALSE,  0);
-
+insert into tweet_table values(default, 4, 'I love rock and roll musics', '2016-09-28 01:00:00', FALSE,  0);
+insert into tweet_table values(default, 5, 'I want to go to Japan on vacation', '2016-09-28 01:00:00', FALSE,  0);
+insert into tweet_table values(default, 5, 'I love cartoons', '2016-09-28 01:00:00', FALSE,  0);
+insert into tweet_table values(default, 3, 'I want to build a robot', '2016-09-28 01:00:00', TRUE,  0);
 
 
 

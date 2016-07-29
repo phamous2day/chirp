@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block body %}
+
+<h1>Sign up to Chirp</h1>
+<form action="/submit_signup" method="POST">
+
+    <label>Name</label>
+    <input type="name" placeholder="Name" name="name">
+    <label for="inputEmail">Email address</label>
+    <input type="email"  placeholder="Email" name="email">
+    <br>
+
+
+    <label>User Name</label>
+    <input type="username" placeholder="Username" name="username">
+    <label for="inputPassword">Password</label>
+    <input type="password"  placeholder="Password" name="password">
+
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+{% endblock %}

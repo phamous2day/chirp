@@ -1,0 +1,24 @@
+<h1>Welcome to Chirp</h1>
+{% extends "index.html" %}
+{% block body %}
+
+<form action = "/goLogin" method="POST">
+  <button type = 'submit' name="goLogin">Login</button>
+</form>
+
+
+<form action = "/goSignup" method="POST">
+  <button type="submit" name="goSignup">Signup for Account</button>
+</form>
+
+
+
+
+
+<ul> {% for tweet in tweets %}
+  <li> {{ tweet.name }} - {{tweet.tweet_content}}</li>
+  <hr>
+{% endfor %}
+</ul>
+
+{% endblock %}
