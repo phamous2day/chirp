@@ -8,7 +8,7 @@ My classmate, Regan [@rrgn](https://github.com/rrgn) encountered several obstale
 '''query = db.query("select * from users where **users.username = $1 AND users.password =$2", username,password)
     login_validation = query.namedresult()'''
 OR
-'''username = session['username']
+```username = session['username']
     timeline_query = db.query('''
         select
         tweet_table.tweet_content, tweet_table.id as tweet_id, tweet_table.hearts_amount
@@ -17,18 +17,18 @@ OR
         tweet_table on users.id = tweet_table.user_id
     where users.username = '%s'
     ''' % username**)
-'''
+```
 *I learned that with pygre(postgresql integration with python) is a bit tricky with method posts for routes. Pushing it all into one route was not working, because I belive it would be routing to itself. Instead, had to create 2 routes for taking input information in like username and then redirecting/rendering pages. It'll look like this:
 
-'''@app.route('/login')
+```@app.route('/login')
 def login():
     return render_template('login.html')
-'''
+```
 
-'''@app.route('/goLogin', methods = ['POST'])
+```@app.route('/goLogin', methods = ['POST'])
 def goLogin():
     return render_template('/login.html')
-'''
+```
 
 ###Phase 1: Setting up pages
 ![screenshot](profile.png)
