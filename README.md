@@ -36,12 +36,16 @@ OR
     return render_template('/login.html')
 ```
 
-###Phase 1: Setting up pages
+#Phase 1: Setting up pages
+------
 ![screenshot](profile.png)
 ![screenshot](timeline.png)
+------
+------
+------
 
-
-###Phase 2: Associating each page with username credentials, creating signup page
+#Phase 2: Associating each page with username credentials, creating signup page
+------
 ![screenshot](homepage.png)
 ![screenshot](profile2.png)
 ![screenshot](timeline2.png)
