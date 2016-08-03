@@ -6,11 +6,12 @@ To recreate twitter leveraging PostgreSQL, Python, Jinja templates. With this pr
 My classmate, Regan [@rrgn](https://github.com/rrgn) encountered several obstales:
 * Making our query pulls adapt to customize login credentials. Initially the queries would pull all the data for all users (select *). This was improved by binding the data using $1 or $d ('d' for digit, 's' for string, 'r' for raw data).
  
-```nodejs
+```node
     query = db.query("select * from users where **users.username = $1 AND users.password =$2", username,password)
     login_validation = query.namedresult()'''
 ```
 OR
+
 ```node
     username = session['username']
     timeline_query = db.query('''
@@ -20,7 +21,7 @@ OR
     left outer join
         tweet_table on users.id = tweet_table.user_id
     where users.username = '%s'
-    ''' % username**)
+    ''' % username)
 ```
 
 * I learned that with pygre(postgresql integration with python) is a bit tricky with method posts for routes. Pushing it all into one route was not working, because I belive it would be routing to itself. Instead, had to create 2 routes for taking input information in like username and then redirecting/rendering pages. To clarify, a login would need 2 routes: 1 to render the page, the 2nd to process/post the inputted information:
