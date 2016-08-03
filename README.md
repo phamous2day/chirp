@@ -11,7 +11,7 @@ My classmate, Regan [@rrgn](https://github.com/rrgn) encountered several obstale
     login_validation = query.namedresult()'''
 ```
 OR
-```nodejs
+```node
     username = session['username']
     timeline_query = db.query('''
         select
