@@ -6,12 +6,12 @@ To recreate twitter leveraging PostgreSQL, Python, Jinja templates. With this pr
 My classmate, Regan [@rrgn](https://github.com/rrgn) encountered several obstales:
 * Making our query pulls adapt to customize login credentials. Initially the queries would pull all the data for all users (select *). This was improved by binding the data using $1 or $d ('d' for digit, 's' for string, 'r' for raw data).
  
-```mongodb
+```node
     query = db.query("select * from users where **users.username = $1 AND users.password =$2", username,password)
     login_validation = query.namedresult()'''
 ```
 OR
-```mongo.db
+```nodejs
     username = session['username']
     timeline_query = db.query('''
         select
