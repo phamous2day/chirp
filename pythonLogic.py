@@ -1,9 +1,9 @@
 from flask import Flask, session, request, render_template, redirect
 
 from dotenv import load_dotenv, find_dotenv
-    import os
+import os
 
-    load_dotenv(find_dotenv())
+load_dotenv(find_dotenv())
 
 import pg
 
