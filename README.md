@@ -26,7 +26,7 @@ OR
 
 * I learned that with pygre(postgresql integration with python) is a bit tricky with method posts for routes. Pushing it all into one route was not working, because I belive it would be routing to itself. Instead, had to create 2 routes for taking input information in like username and then redirecting/rendering pages. To clarify, a login would need 2 routes: 1 to render the page, the 2nd to process/post the inputted information:
 
-```
+```node
     @app.route('/login')
     def login():
     return render_template('login.html')
