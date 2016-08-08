@@ -37,6 +37,11 @@ OR
     return render_template('/login.html')
 ```
 
+###Resources:
+Account to store the files: https://signup.heroku.com/login
+Added this to enhance my terminal: https://toolbelt.heroku.com
+Need this to store database information (tables and stuff): https://postgres.heroku.com/databases
+
 #Phase 1: Setting up pages
 ------
 ![screenshot](profile.png)
