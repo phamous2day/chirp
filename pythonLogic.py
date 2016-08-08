@@ -1,8 +1,19 @@
 from flask import Flask, session, request, render_template, redirect
 
+from dotenv import load_dotenv, find_dotenv
+    import os
+
+    load_dotenv(find_dotenv())
+
 import pg
 
-db = pg.DB(dbname='chirp_db')
+db = pg.DB(
+  dbname=os.environ.get('DBNAME'),
+  host=os.environ.get('DBHOST'),
+  port=int(os.environ.get('DBPORT')),
+  user=os.environ.get('DBUSER'),
+  passwd=os.environ.get('DBPASSWORD')
+)
 
 app = Flask('ChirpApp')
 
