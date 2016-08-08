@@ -12,7 +12,7 @@ My classmate, Regan [@rrgn](https://github.com/rrgn) encountered several obstale
 ```
 OR
 
-```
+```sql
     username = session['username']
     timeline_query = db.query('''
         select
