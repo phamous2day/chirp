@@ -31,7 +31,7 @@ OR
     def login():
     return render_template('login.html')
 ```
-```
+```node
     @app.route('/goLogin', methods = ['POST'])
     def goLogin():
     return render_template('/login.html')
